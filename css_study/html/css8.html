@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body > div {
+            position: relative;
+            margin: 200px auto;
+            border: 1px solid #222222;
+            width: 500px;
+            height: 400px;
+        }
+        
+        div > div {
+            position: absolute;
+            top: 50%;
+            left:50%;
+            transform: translate(-50%, -50%); 
+            /* 
+                translateX(): 좌표이동 (기둥 축 이동)
+                scale(): 길이축소/확대
+            */
+            width: 300px;
+            height: 100px;
+            background-color: red;
+            transition: all 1s ease-in-out;
+
+            &:hover {
+                border-radius: 50%;
+                width: 100px;
+            }
+        }
+
+        input[type="text"] {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 30px;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease-in-out;
+
+            &:focus {
+                border: 2px solid #222222;
+                width:400px;    
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div></div>
+    </div>
+    <div>
+        <input type="text">
+    </div>
+</body>
+</html>

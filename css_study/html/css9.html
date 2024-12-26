@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width:100px;
+            height:100px;
+            background-color:aliceblue;
+            border:1px solid transparent;
+            animation-name: shape;
+            animation-duration: 3s;
+        }
+
+        #box2 {
+            width:100px;
+            height:100px;
+            background-color:antiquewhite;
+            border: 1px solid transparent;
+            animation-name: rotate;
+            animation-duration: 3s; 
+        }
+
+        @keyframes shape {
+            from {border : 1px solid transparent; }
+            to {
+                border: 1px solid #000;
+                border-radius: 50%;
+            }
+        }
+
+        @keyframes rotate {
+            from {transform: rotate(0deg); }
+            to {transform: rotate(45deg); }
+        }
+
+        /* @keyframes a {
+            from {
+                top: 0px;
+
+            }
+            to {
+                top: 400px;
+            }
+        } */
+
+        @keyframes a {
+            0% {
+                left: 0;
+                top: 0px;
+
+            }
+            50% {
+                left: 50%;
+            }
+            100% {
+                top: 400px;
+                left:400px;
+            }
+        }
+
+        @keyframes b {
+            0% {
+                right: 0;
+                top: 0px;
+
+            }
+            50% {
+                left: 50%;
+            }
+            100% {
+                right: 400px;
+                bottom:0;
+            }
+        }
+
+        .main-box {
+            position: relative;
+            margin: 200px auto;
+            border: 1px solid #222222;
+            width: 500px;
+            height: 500px;
+        }
+
+        .box {
+            position: absolute;
+            border: 1px solid #222222;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation-name: a;
+            animation-duration: 1s;
+            animation-direction: alternate; /*alternate: 다시 돌아감, normal: 한방향으로 */
+            animation-iteration-count: infinite;
+        }
+
+        .box1 {
+            animation-name: a;
+        }
+
+        .box2 {
+            animation-name: b;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-box">
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+    </div>
+</body>
+</html>

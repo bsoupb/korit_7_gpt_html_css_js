@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mainBox {
+            /* display:inline-block;  */
+            /* inline: 글자취급 -> 너비,높이 적용X */
+            box-sizing:border-box;
+            /*
+            box-sizing: 
+            content-box -> 너비와 높이의 기준을 컨텐츠박스로 잡음
+            border-box -> 너비와 높이의 기준을 border-box까지 주겠다
+            */
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin: 50px;
+            border: 10px solid #000000;
+            padding: 30px;
+        }
+
+        #subBox { 
+            background-color: red;
+            border: 2px solid blue;
+            width: 100%; /* 부모요소의 컨텐츠요소의 사이즈와 일치 */
+            height: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    <div> 블록레벨
+        <input type="text">
+    </div>
+    <div> 줄바꿈할 때 div로
+        <input type="text"> 인라인레벨
+    </div>
+    -->
+
+    <div id="mainBox">
+        <div id="subBox"></div>
+    </div>
+</body>
+</html>

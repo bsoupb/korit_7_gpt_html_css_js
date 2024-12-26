@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-box {
+            margin: 100px auto;
+            border: 3px solid #333333;
+            width: 600px;
+            height: 400px;
+            position: relative;
+        }
+
+        .sub-box1,
+        .sub-box2 {
+            width: 100px;
+            height: 100px;
+        }
+
+        .sub-box1 {
+            background-color: red;
+        }
+
+        .sub-box2 {
+            position: absolute;
+            /*
+                position: relative - 이전 요소 기준 위치 수정
+                position: static - 위치 수정 X 
+                position: absolute - 전체 박스(html) 기준 위치 수정 / *부모 중요
+                
+                position: absolute는 가장 가까운 위치 지정 부모를 기준으로 절대적으로 움직이게 된다.
+                일반적으로 absolute를 쓸 경우, 기준이 될 부모에게 position: relative; 를 부여하면 된다.
+            */
+            top: 100px;
+            left: 100px;
+            background-color: yellow;
+        }
+
+        .sub-box1-2 {   /* 부모 요소에 relative or absolute 없으면 위로 타고 올라가서 찾음 */
+            position: relative;
+            border: 5px solid #222222;
+            width: 200px;
+            height: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-box">
+        <div class="sub-box1"></div>
+        <div class="sub-box1-2">
+            <div class="sub-box2"></div>
+        </div>
+    </div>
+</body>
+</html>
