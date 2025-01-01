@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            margin: 200px auto;
+            border: 1px solid #222222;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+            
+            & > img {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<style>
+        .img-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            margin: 200px auto;
+            border: 1px solid #222222;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+            
+            & > img {
+                height: 100%;
+            }
+        }
+
+        .slide {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            margin: 100px auto;
+            border: 1px solid #dbdbdb;
+            width: 1200px;
+            height: 400px;
+            overflow: hidden;
+            
+            & > img {
+                width: 100%;
+            } 
+
+            & > .prev-button,
+            & > .next-button {
+                position: absolute;
+                transform: translateY(-50%);
+                top: 50%;
+                border: none;
+                padding: 10px;
+                background-color: transparent;
+                cursor: pointer;
+
+                & > svg {
+                    height: 100px;
+                }
+            }
+
+            & > .prev-button {
+                left: 50px;
+            }
+
+            & > .next-button {
+                right: 50px;
+            }
+        }
+    </style>
+<body>
+    <div id="box1" class="box">
+        <input type="text">
+    </div>
+    <div class="box"></div>
+
+    <button onclick="setInnerText()">text</button>
+    <button onclick="setInnerHtml()">html</button>
+    <h1 class="now">현재 시간: <span></span></h1>
+
+    <div class="img-box">
+        <img src="" alt="">
+    </div>
+
+    <div>
+        <input type="checkbox" id="isChecked">
+        <label for="isChecked">고정</label>
+    </div>
+    <div class="slide">
+        <button class="prev-button">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223"></path></svg>
+        </button>
+        <img src="" alt="">
+        <button class="next-button"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671"></path></svg></button>
+    </div>
+
+    <input type="text" class="text-input">
+    <input type="text" class="text-input2">
+    <button class="submit-button">확인</button>
+
+    <script>
+        const idBox1 = document.getElementById("box1");
+        console.log(idBox1);
+        const boxList = document.getElementByClassName("box");
+        console.log(boxList);
+        const divList = document.getElementsByTageName("div");
+        console.log(divList);
+
+        const idBox2 = document.querySelector("#box1");
+        const boxList2 = document.querySelectorAll(".box");
+        const divList2 = document.querySelectorAll("div");
+
+        function setInnerText() {
+            const date = new Date().toISOString();  // toISOString(): 날짜 포맷 맞춰주는 함수
+            const nowElement = document.querySelector(".now > span");
+            nowElement.InnerText = `<i>${date}</i>`;    // InnerText: element 안의 text 값들만 -> 태그 반영X
+        }
+        
+        function setInnterHtml() {
+            const date = new Date().toISOString();
+            const nowElement = document.querySelector(".now > span");
+            nowElement.innerHTML = `<i>${date}</i>`;    // InnerHTML: element 안의 HTML -> 태그 반영O
+        }
+
+        let currentIndex = 0;
+        
+        const urlList = [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7OrtM7FfDgFfgOmRqL4R__bU5cjx1ltwy1A&s",
+            "https://i.namu.wiki/i/MuCO_ocla-FyadGnRZytkRLggQOcqxv_hXNjN7aYXDOPivIChJNdiRXp6vwSXbM6GcUL3pVTL-5U5TKQ0f1YhA.svg",
+            "https://i.namu.wiki/i/vkGpBcmks1_NcJW0HUFa6jlwlM6h11B-8nxRRX4bYC703H4nLo7j4dQdRCC32gz8Q-BqRcAnQgFSXMjB8jPohg.svg",
+            "https://images.velog.io/images/galaxy/post/b501f325-1810-4e26-962e-e66ca0b94ca9/image.png",
+        ];
+
+        function handleImgChangeOnClick() {
+            if(currentIndex < urlList.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+        }
+
+        function handlePrevOnclick() {
+            const fixedCheckBox = document.querySelector("#fixed");
+
+            if(currentIndex > 0) {
+                currentIndex--;
+            } else {
+                if(fixedCheckBox.checked){
+                    return;
+                }
+                currentIndex = urlList.length - 1;
+            }
+            setSlideImgSrc(urlList[currentIndex]);
+        }
+
+        function handleNextOnclick() {
+            const fixedCheckBox = document.querySelector("#fixed");
+
+            if(currentIndex < urlList.length - 1) {
+                currentIndex++;
+            } else {
+                if(fixedCheckBox.checked){
+                    return;
+                }
+                currentIndex = 0;
+            }
+            setSlideImgSrc(urlList[currentIndex]);
+        }
+
+        function setSlideImgSrc(src) {
+            const slideImgElement = document.querySelector(".slide > img");
+            slidImgElement.src = src;
+        }
+
+        window.onload = () => {
+            const imgElement = document.querySelector(".img-box");
+            imgElement.src = urlList[currentIndex];
+            // imgElement.setAttribute("src", urlList[currentIndex]);  -  setAttribute(): DOM 요소에 속성 값을 설정하는 함수
+            const imgBoxElement = document.querySelector(".img-box");
+            imgBoxElement.onclick = handleImgChangeOnclick;
+            
+            const imgPrevElement = document.querySelector(".slide > .prev-button");
+            imgPrevElement.onclick = handlePrevOnclick;
+            
+            const imgNextElement = document.querySelector(".slide > .next-button");
+            imgNextElement.onclick = handleNextOnclick;
+
+            setSlideImgSrc(urlList[currentIndex]);
+            
+            const textInputElement = document.querySelector(".text-input");
+            const textInputElement2 = document.querySelector(".text-input2");
+            const submitButtonElement = document.querySelector(".submit-button");
+
+            textInputElement.onkeyup = handleInputOnChange; 
+            textInputElement2.onkeyup = handleInputOnChange2; // keydown: enter 땅 누르자마자 동작
+            textInputElement.onkeydown = handleInputOnKeyDown;
+            textInputElement2.onkeydown = handleInputOnKeyDown2;
+            submitButtonElement.onclick = handleSubmitOnClick;
+        }   
+
+        let data = {
+            text1: "",
+            text2: "",
+        }
+
+        function handleInputOnKeyDown(e) {
+            if(e.keyCode !== 13){
+                return;
+            }
+            const nextInput = document.querySelector(".text-input2");
+            nextInput.focus();
+        }
+
+        function handleInputOnKeyDown2(e) {
+            if(e.keyCode !== 13){
+                return;
+            }
+            const submitButton = document.querySelector(".submit-button");
+            submitButton.click();
+        }
+
+        function handleInputOnChange() {
+            const inputElement = document.querySelector(".text-input");
+            data = {
+                ...data,
+                text1: inputElement.value,
+            }
+        }
+
+        function handleInputOnChange2(e) {
+            data = {
+                ...data,
+                text2: e.target.value,
+            }
+        }
+
+        function handleSubmitOnClick(e) {
+            console.log(data);
+        }
+
+    </script>
+</body>
+</html>

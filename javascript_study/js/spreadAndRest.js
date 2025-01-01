@@ -30,3 +30,5 @@ console.log(obj3);
 
 const[ n4, n5, ...newNums ] = nums;
 console.log(newNums);
+
+// spread: 전체 복사, rest: 남아있는 거 가져오기

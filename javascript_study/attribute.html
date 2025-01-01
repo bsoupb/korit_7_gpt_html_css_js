@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            margin: 200px auto;
+            border: 1px solid #222222;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+            
+            & > img {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="img-box">
+        <img src="" alt="">
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        
+        const urlList = [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7OrtM7FfDgFfgOmRqL4R__bU5cjx1ltwy1A&s",
+            "https://i.namu.wiki/i/MuCO_ocla-FyadGnRZytkRLggQOcqxv_hXNjN7aYXDOPivIChJNdiRXp6vwSXbM6GcUL3pVTL-5U5TKQ0f1YhA.svg",
+            "https://i.namu.wiki/i/vkGpBcmks1_NcJW0HUFa6jlwlM6h11B-8nxRRX4bYC703H4nLo7j4dQdRCC32gz8Q-BqRcAnQgFSXMjB8jPohg.svg",
+            "https://images.velog.io/images/galaxy/post/b501f325-1810-4e26-962e-e66ca0b94ca9/image.png",
+        ];
+
+        function handleImgChangeOnClick() {
+            
+            
+            if(currentIndex < urlList.length - 1){
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+
+            const imgElement = document.querySelector(".img-box > img");
+            imgElement.src = urlList[currentIndex];
+
+                    
+        }
+        
+
+        window.onload = () => {
+            const imgElement = document.querySelector(".img-box > img");
+            // imgElement.setAttribute("src", urlList[currentIndex]);
+            imgElement.src = urlList[currentIndex];  // 위와 같은 표현
+            const imgBoxElement = document.querySelector(".img-box");
+            imgBoxElement.onclick = handleImgChangeOnClick; // <div class="img-box">
+        }
+    </script>
+</body>
+</html>
