@@ -1,0 +1,61 @@
+.ipad-main {
+    
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    
+    & > input,
+    & > textarea {
+        margin: 0 30px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        height: 100px;
+    }
+}
+
+.save-container {
+
+    & > .save-zone {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    
+        & > .back-button {
+            margin-bottom: 20px;
+
+            & svg {
+                margin: 0 10px;
+                width: 30px;
+                height: 30px;
+                fill: #ac6116;
+            }
+        }
+
+        & > h1 {
+            margin:0;
+            font-weight: 600;
+            color: #eeeeee;
+        }
+
+        & > .save-link {
+            color: #ac6116;
+            margin-right: 10px;
+        }
+    }
+}
+
+.inputs {
+    flex-grow: 1;
+
+    & > .content {
+        flex-grow: 1;
+        border: none;
+        resize: none;
+
+    }
+
+    margin-bottom: 15px;
+}

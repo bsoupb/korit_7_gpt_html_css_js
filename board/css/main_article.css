@@ -1,0 +1,24 @@
+.main-article {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 10px 20px 30px;
+
+    & input,
+    & textarea {
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        outline: none;
+        border: none;
+        padding: 15px 20px;
+        border-radius: 5px;
+        background-color: #fafafa;
+        
+    }
+
+    & textarea {
+        flex-grow: 1;
+        resize: none;   /* 사이즈 조정 불가능 */
+
+    }
+}
